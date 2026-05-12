@@ -16,6 +16,9 @@ A full-stack task management app built with FastAPI, PostgreSQL and React — fe
 ### ➕ New Task
 <img src="screenshots/new-task.png" width="700">
 
+### ✅ Task Added
+<img src="screenshots/task-added.png" width="700">
+
 ## Tech Stack
 
 | Layer    | Technology                          |
@@ -174,3 +177,9 @@ taskflow/
 | GET    | /api/tasks/{id}    | Get a task         | Yes  |
 | PUT    | /api/tasks/{id}    | Update a task      | Yes  |
 | DELETE | /api/tasks/{id}    | Delete a task      | Yes  |
+
+---
+
+## 🌐 Live Demo
+
+[View the live project](https://task-flow-pink-xi.vercel.app/)
