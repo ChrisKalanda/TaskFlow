@@ -1,0 +1,57 @@
+{
+  "app": {
+    "loading": "Loading..."
+  },
+  "auth": {
+    "appName": "TaskFlow",
+    "login": "Login",
+    "register": "Create an account",
+    "username": "Username",
+    "email": "Email",
+    "password": "Password",
+    "signingIn": "Signing in...",
+    "signIn": "Sign in",
+    "creating": "Creating...",
+    "createAccount": "Create account",
+    "noAccount": "No account?",
+    "alreadyAccount": "Already have an account?",
+    "signUp": "Sign up",
+    "loginError": "Invalid credentials. Please try again.",
+    "registerError": "Registration error."
+  },
+  "dashboard": {
+    "hello": "Hello, {{username}}",
+    "newTask": "+ New task",
+    "logout": "Logout",
+    "noTasks": "No tasks",
+    "columns": {
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    }
+  },
+  "locale": "en-CA",
+  "task": {
+    "editTitle": "Edit task",
+    "newTitle": "New task",
+    "titleLabel": "Title *",
+    "descriptionLabel": "Description",
+    "statusLabel": "Status",
+    "priorityLabel": "Priority",
+    "dueDateLabel": "Due date",
+    "cancel": "Cancel",
+    "save": "Save",
+    "create": "Create",
+    "dueDate": "Due: {{date}}",
+    "status": {
+      "todo": "To Do",
+      "in_progress": "In Progress",
+      "done": "Done"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High"
+    }
+  }
+}

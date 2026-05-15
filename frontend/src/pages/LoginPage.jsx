@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
+import LanguageToggle from "../components/LanguageToggle";
 
 export default function LoginPage() {
   const { login } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [form, setForm] = useState({ username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +20,7 @@ export default function LoginPage() {
       await login(form.username, form.password);
       navigate("/");
     } catch {
-      setError("Identifiants incorrects. Veuillez réessayer.");
+      setError(t("auth.loginError"));
     } finally {
       setLoading(false);
     }
@@ -26,11 +29,14 @@ export default function LoginPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>TaskFlow</h1>
-        <h2>Connexion</h2>
+        <div className="auth-lang">
+          <LanguageToggle />
+        </div>
+        <h1>{t("auth.appName")}</h1>
+        <h2>{t("auth.login")}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Nom d&apos;utilisateur</label>
+            <label>{t("auth.username")}</label>
             <input
               type="text"
               value={form.username}
@@ -39,7 +45,7 @@ export default function LoginPage() {
             />
           </div>
           <div className="form-group">
-            <label>Mot de passe</label>
+            <label>{t("auth.password")}</label>
             <input
               type="password"
               value={form.password}
@@ -49,11 +55,11 @@ export default function LoginPage() {
           </div>
           {error && <p className="error">{error}</p>}
           <button type="submit" disabled={loading} className="btn-primary">
-            {loading ? "Connexion..." : "Se connecter"}
+            {loading ? t("auth.signingIn") : t("auth.signIn")}
           </button>
         </form>
         <p>
-          Pas de compte ? <Link to="/register">S&apos;inscrire</Link>
+          {t("auth.noAccount")} <Link to="/register">{t("auth.signUp")}</Link>
         </p>
       </div>
     </div>

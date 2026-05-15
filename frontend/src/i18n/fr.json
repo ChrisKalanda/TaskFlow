@@ -1,0 +1,57 @@
+{
+  "app": {
+    "loading": "Chargement..."
+  },
+  "auth": {
+    "appName": "TaskFlow",
+    "login": "Connexion",
+    "register": "Créer un compte",
+    "username": "Nom d'utilisateur",
+    "email": "Email",
+    "password": "Mot de passe",
+    "signingIn": "Connexion...",
+    "signIn": "Se connecter",
+    "creating": "Création...",
+    "createAccount": "Créer le compte",
+    "noAccount": "Pas de compte ?",
+    "alreadyAccount": "Déjà un compte ?",
+    "signUp": "S'inscrire",
+    "loginError": "Identifiants incorrects. Veuillez réessayer.",
+    "registerError": "Erreur lors de l'inscription."
+  },
+  "dashboard": {
+    "hello": "Bonjour, {{username}}",
+    "newTask": "+ Nouvelle tâche",
+    "logout": "Déconnexion",
+    "noTasks": "Aucune tâche",
+    "columns": {
+      "todo": "À faire",
+      "in_progress": "En cours",
+      "done": "Terminé"
+    }
+  },
+  "locale": "fr-CA",
+  "task": {
+    "editTitle": "Modifier la tâche",
+    "newTitle": "Nouvelle tâche",
+    "titleLabel": "Titre *",
+    "descriptionLabel": "Description",
+    "statusLabel": "Statut",
+    "priorityLabel": "Priorité",
+    "dueDateLabel": "Date d'échéance",
+    "cancel": "Annuler",
+    "save": "Enregistrer",
+    "create": "Créer",
+    "dueDate": "Échéance : {{date}}",
+    "status": {
+      "todo": "À faire",
+      "in_progress": "En cours",
+      "done": "Terminé"
+    },
+    "priority": {
+      "low": "Faible",
+      "medium": "Moyen",
+      "high": "Élevé"
+    }
+  }
+}

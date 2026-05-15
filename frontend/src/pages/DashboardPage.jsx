@@ -1,17 +1,19 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
 import api from "../api";
 import TaskCard from "../components/TaskCard";
 import TaskModal from "../components/TaskModal";
-
-const STATUSES = ["todo", "in_progress", "done"];
-const STATUS_LABELS = { todo: "À faire", in_progress: "En cours", done: "Terminé" };
+import LanguageToggle from "../components/LanguageToggle";
 
 export default function DashboardPage() {
   const { user, logout } = useAuth();
+  const { t } = useTranslation();
   const [tasks, setTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [editingTask, setEditingTask] = useState(null);
+
+  const STATUSES = ["todo", "in_progress", "done"];
 
   const fetchTasks = async () => {
     const res = await api.get("/api/tasks/");
@@ -51,11 +53,12 @@ export default function DashboardPage() {
       <header className="dashboard-header">
         <h1>TaskFlow</h1>
         <div className="header-right">
-          <span>Bonjour, {user?.username}</span>
+          <span>{t("dashboard.hello", { username: user?.username })}</span>
           <button onClick={() => { setEditingTask(null); setShowModal(true); }} className="btn-primary">
-            + Nouvelle tâche
+            {t("dashboard.newTask")}
           </button>
-          <button onClick={logout} className="btn-secondary">Déconnexion</button>
+          <button onClick={logout} className="btn-secondary">{t("dashboard.logout")}</button>
+          <LanguageToggle />
         </div>
       </header>
 
@@ -63,7 +66,7 @@ export default function DashboardPage() {
         {STATUSES.map((status) => (
           <div key={status} className="column">
             <div className="column-header">
-              <h2>{STATUS_LABELS[status]}</h2>
+              <h2>{t(`dashboard.columns.${status}`)}</h2>
               <span className="count">{tasksByStatus(status).length}</span>
             </div>
             <div className="task-list">
@@ -76,7 +79,7 @@ export default function DashboardPage() {
                 />
               ))}
               {tasksByStatus(status).length === 0 && (
-                <p className="empty">Aucune tâche</p>
+                <p className="empty">{t("dashboard.noTasks")}</p>
               )}
             </div>
           </div>

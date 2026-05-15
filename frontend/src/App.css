@@ -10,6 +10,32 @@ body {
   color: #1e293b;
 }
 
+/* --- Language Toggle --- */
+.btn-lang {
+  background: transparent;
+  border: 1.5px solid #e2e8f0;
+  color: #64748b;
+  padding: 0.3rem 0.65rem;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  letter-spacing: 0.05em;
+}
+
+.btn-lang:hover {
+  background: #6366f1;
+  color: white;
+  border-color: #6366f1;
+}
+
+.auth-lang {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 0.75rem;
+}
+
 /* --- Auth --- */
 .auth-container {
   min-height: 100vh;

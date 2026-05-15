@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "../context/AuthContext";
+import LanguageToggle from "../components/LanguageToggle";
 
 export default function RegisterPage() {
   const { register } = useAuth();
   const navigate = useNavigate();
+  const { t } = useTranslation();
   const [form, setForm] = useState({ email: "", username: "", password: "" });
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -17,7 +20,7 @@ export default function RegisterPage() {
       await register(form.email, form.username, form.password);
       navigate("/");
     } catch (err) {
-      setError(err.response?.data?.detail || "Erreur lors de l'inscription.");
+      setError(err.response?.data?.detail || t("auth.registerError"));
     } finally {
       setLoading(false);
     }
@@ -26,11 +29,14 @@ export default function RegisterPage() {
   return (
     <div className="auth-container">
       <div className="auth-card">
-        <h1>TaskFlow</h1>
-        <h2>Créer un compte</h2>
+        <div className="auth-lang">
+          <LanguageToggle />
+        </div>
+        <h1>{t("auth.appName")}</h1>
+        <h2>{t("auth.register")}</h2>
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Email</label>
+            <label>{t("auth.email")}</label>
             <input
               type="email"
               value={form.email}
@@ -39,7 +45,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="form-group">
-            <label>Nom d&apos;utilisateur</label>
+            <label>{t("auth.username")}</label>
             <input
               type="text"
               value={form.username}
@@ -48,7 +54,7 @@ export default function RegisterPage() {
             />
           </div>
           <div className="form-group">
-            <label>Mot de passe</label>
+            <label>{t("auth.password")}</label>
             <input
               type="password"
               value={form.password}
@@ -59,11 +65,11 @@ export default function RegisterPage() {
           </div>
           {error && <p className="error">{error}</p>}
           <button type="submit" disabled={loading} className="btn-primary">
-            {loading ? "Création..." : "Créer le compte"}
+            {loading ? t("auth.creating") : t("auth.createAccount")}
           </button>
         </form>
         <p>
-          Déjà un compte ? <Link to="/login">Se connecter</Link>
+          {t("auth.alreadyAccount")} <Link to="/login">{t("auth.signIn")}</Link>
         </p>
       </div>
     </div>
